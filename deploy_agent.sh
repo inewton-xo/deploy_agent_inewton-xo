@@ -35,7 +35,7 @@ on_interrupt() {
         local zipfile="${DEPLOY_DIR}_archive.zip"
         echo "!! Archiving the incomplete project into $zipfile ..."
         if zip -rq "$zipfile" "$DEPLOY_DIR"; then
-            rm -rf "$SCRIPT_DIR/$DEPLOY_DIR"
+            rm -rf "${SCRIPT_DIR:?}/${DEPLOY_DIR:?}"
             echo "!! Archive created: $SCRIPT_DIR/$zipfile"
             echo "!! Incomplete directory removed."
         else
